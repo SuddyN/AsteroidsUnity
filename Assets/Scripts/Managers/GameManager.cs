@@ -7,6 +7,8 @@ public class GameManager: MonoBehaviour {
     public GameObject playerObject;
     public Vector3 playerVelocity;
 
+    public GameObject playField;
+
     // Start is called before the first frame update
     void Start() {
 

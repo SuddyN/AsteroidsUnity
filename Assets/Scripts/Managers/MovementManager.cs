@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MovementManager: MonoBehaviour {
 
-    public float rotateSpeed = 30.0f;
+    public float rotateSpeed = 90.0f;
+    public float playAreaWidth = 16;
+    public float playAreaHeight = 9;
 
     // Start is called before the first frame update
     void Start() {
@@ -13,30 +15,51 @@ public class MovementManager: MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        boundaryCheck();
         validateMovement();
         Managers.Game.playerObject.transform.Translate(Managers.Game.playerVelocity * Time.deltaTime);
     }
 
-    void validateMovement() {
+    private void validateMovement() {
         Managers.Game.playerVelocity.z = 0;
         if (Managers.Game.playerVelocity.magnitude > 3) {
             Managers.Game.playerVelocity = Managers.Game.playerVelocity.normalized * 3;
         }
     }
 
-    public void boost() {
+    private void boundaryCheck() {
+        Vector3 pos = Managers.Game.playerObject.transform.position;
+        pos.z = 0;
+        if (pos.x > playAreaWidth / 2) {
+            pos.x = -playAreaWidth / 2;
+        } else if (pos.x < -playAreaWidth / 2) {
+            pos.x = playAreaWidth / 2;
+        }
+        if (pos.y > playAreaHeight / 2) {
+            pos.y = -playAreaHeight / 2;
+        } else if (pos.y < -playAreaHeight / 2) {
+            pos.y = playAreaHeight / 2;
+        }
+        Managers.Game.playerObject.transform.SetPositionAndRotation(pos, Managers.Game.playerObject.transform.rotation);
+    }
 
+    public void boost() {
+        Managers.Game.playerVelocity.y += 0.005f;
     }
 
     public void brake() {
-
+        Managers.Game.playerVelocity.y -= 0.005f;
     }
 
     public void rotateClockwise() {
-        Managers.Game.playerObject.transform.Rotate(0, 0, -rotateSpeed * Time.deltaTime);
+        float rotation = -rotateSpeed * Time.deltaTime;
+        Managers.Game.playerObject.transform.Rotate(0, 0, rotation);
+        Managers.Game.playerVelocity = Quaternion.Euler(0, 0, -rotation) * Managers.Game.playerVelocity;
     }
 
     public void rotateCounterClockwise() {
-        Managers.Game.playerObject.transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
+        float rotation = rotateSpeed * Time.deltaTime;
+        Managers.Game.playerObject.transform.Rotate(0, 0, rotation);
+        Managers.Game.playerVelocity = Quaternion.Euler(0, 0, -rotation) * Managers.Game.playerVelocity;
     }
 }
