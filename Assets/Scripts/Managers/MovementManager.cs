@@ -2,11 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager: MonoBehaviour {
-
-    public GameObject playerObject;
-    public Vector3 playerVelocity;
-
+public class MovementManager: MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
 
@@ -14,6 +10,10 @@ public class GameManager: MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        Managers.Game.playerObject.transform.Translate(Managers.Game.playerVelocity * Time.deltaTime);
+    }
+
+    void boost() {
 
     }
 }
