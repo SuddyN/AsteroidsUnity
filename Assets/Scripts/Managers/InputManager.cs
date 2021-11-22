@@ -14,23 +14,23 @@ public class InputManager: MonoBehaviour {
     }
 
     void KeyboardInput() {
-        bool rotateClockwise = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
-        bool rotateCounterClockwise = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
-        bool boost = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
-        bool brake = Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
-        bool shoot = Input.GetKeyDown(KeyCode.Space);
+        bool rotateClockwise = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
+        bool rotateCounterClockwise = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
+        bool boost = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        bool brake = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
+        bool shoot = Input.GetKey(KeyCode.Space);
 
         if (rotateClockwise && !rotateCounterClockwise) {
-            // TODO: ROTATE CLOCKWISE
+            Managers.Movement.rotateClockwise();
         }
         if (rotateCounterClockwise && !rotateClockwise) {
-            // TODO: ROTATE COUNTERCLOCKWISE
+            Managers.Movement.rotateCounterClockwise();
         }
         if (boost && !brake) {
-            // TODO: BOOST
+            Managers.Movement.boost();
         }
         if (brake && !boost) {
-            // TODO: BRAKE
+            Managers.Movement.brake();
         }
         if (shoot) {
             // TODO: SHOOT
