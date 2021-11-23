@@ -44,11 +44,11 @@ public class MovementManager: MonoBehaviour {
     }
 
     public void boost() {
-        Managers.Game.playerVelocity.y += 0.005f;
+        Managers.Game.playerVelocity.y += 2.0f * Time.deltaTime;
     }
 
     public void brake() {
-        Managers.Game.playerVelocity.y -= 0.005f;
+        Managers.Game.playerVelocity.y -= 2.0f* Time.deltaTime;
     }
 
     public void rotateClockwise() {
