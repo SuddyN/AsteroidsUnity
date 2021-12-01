@@ -46,10 +46,10 @@ public class AsteroidManager: MonoBehaviour {
 
         if (spawnObject != null) {
             GameObject newAsteroid0 = Instantiate(spawnObject, gameObject.transform.position, gameObject.transform.rotation);
-            newAsteroid0.GetComponent<Rigidbody>().velocity = Quaternion.Euler(0, 0, -90) * gameObject.GetComponent<Rigidbody>().velocity;
+            newAsteroid0.GetComponent<Rigidbody>().velocity = Quaternion.Euler(0, 0, -90) * gameObject.GetComponent<Rigidbody>().velocity / 2;
 
             GameObject newAsteroid1 = Instantiate(spawnObject, gameObject.transform.position, gameObject.transform.rotation);
-            newAsteroid1.GetComponent<Rigidbody>().velocity = Quaternion.Euler(0, 0, 90) * gameObject.GetComponent<Rigidbody>().velocity;
+            newAsteroid1.GetComponent<Rigidbody>().velocity = Quaternion.Euler(0, 0, 90) * gameObject.GetComponent<Rigidbody>().velocity / 2;
 
             newAsteroid0.GetComponent<AsteroidManager>().invulnarableTimer = 5;
             newAsteroid1.GetComponent<AsteroidManager>().invulnarableTimer = 5;
