@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementManager: MonoBehaviour {
 
-    public float rotateSpeed = 90.0f;
+    public float rotateSpeed = 360.0f;
     public float playAreaWidth = 16;
     public float playAreaHeight = 9;
 

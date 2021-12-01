@@ -264,6 +264,7 @@ MonoBehaviour:
   playerVelocity: {x: 0, y: 0, z: 0}
   playField: {fileID: 1902495884}
   game: {fileID: 373968747}
+  bulletPrefab: {fileID: 1707409850140254177, guid: 0a3aeaf8b9ea89548bcfe5002666f733, type: 3}
 --- !u!114 &373968752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332a6fec7c514f4458f777207eaa7146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 90
+  rotateSpeed: 180
   playAreaWidth: 16
   playAreaHeight: 9
 --- !u!1001 &437898649

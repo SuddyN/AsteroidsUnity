@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), Managers.Game.bulletPrefab.GetComponent<Collider>());
     }
 
     // Update is called once per frame
@@ -18,7 +18,6 @@ public class PlayerManager : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        SceneManager.LoadScene("Asteroids");
-        Destroy(Managers.Game.gameObject);
+
     }
 }

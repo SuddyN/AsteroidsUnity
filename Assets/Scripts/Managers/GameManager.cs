@@ -9,6 +9,7 @@ public class GameManager: MonoBehaviour {
 
     public GameObject playField;
     public GameObject game;
+    public GameObject bulletPrefab;
 
     // Start is called before the first frame update
     void Start() {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AsteroidManager: MonoBehaviour {
 
@@ -40,6 +41,12 @@ public class AsteroidManager: MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision) {
+
+        if (collision.gameObject == Managers.Game.playerObject) {
+            SceneManager.LoadScene("Asteroids");
+            Destroy(Managers.Game.gameObject);
+        }
+
         if (invulnarableTimer > 0) {
             return;
         }
@@ -51,10 +58,12 @@ public class AsteroidManager: MonoBehaviour {
             GameObject newAsteroid1 = Instantiate(spawnObject, gameObject.transform.position, gameObject.transform.rotation);
             newAsteroid1.GetComponent<Rigidbody>().velocity = Quaternion.Euler(0, 0, 90) * gameObject.GetComponent<Rigidbody>().velocity / 2;
 
-            newAsteroid0.GetComponent<AsteroidManager>().invulnarableTimer = 5;
-            newAsteroid1.GetComponent<AsteroidManager>().invulnarableTimer = 5;
+            newAsteroid0.GetComponent<AsteroidManager>().invulnarableTimer = 0.25f;
+            newAsteroid1.GetComponent<AsteroidManager>().invulnarableTimer = 0.25f;
 
         }
+
         Destroy(gameObject);
+        Destroy(collision.gameObject);
     }
 }

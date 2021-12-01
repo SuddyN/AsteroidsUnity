@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class InputManager: MonoBehaviour {
     // Start is called before the first frame update
+
+    private float bulletTimer;
+    public float fireRate = 0.25f;
+
     void Start() {
 
     }
 
     // Update is called once per frame
     void Update() {
+        bulletTimer += Time.deltaTime;
         KeyboardInput();
     }
 
@@ -32,8 +37,13 @@ public class InputManager: MonoBehaviour {
         if (brake && !boost) {
             Managers.Movement.brake();
         }
-        if (shoot) {
+        if (shoot && bulletTimer > fireRate) {
             // TODO: SHOOT
+            GameManager gm = Managers.Game;
+            Vector3 pos = gm.playerObject.transform.position;
+            GameObject bullet = Instantiate(gm.bulletPrefab, pos, gm.playerObject.transform.rotation);
+            bullet.GetComponent<Rigidbody>().velocity = gm.playerObject.transform.up * 5;
+            bulletTimer = 0;
         }
     }
 }
