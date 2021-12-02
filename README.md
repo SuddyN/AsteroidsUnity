@@ -13,7 +13,12 @@ go to https://pages.github.ncsu.edu/ncsuddut/CSC461Prog5/Builds/
 ## How To Play:
 
 W - accelerate forward
+
 S - accelerate backward
+
 A - rotate counter-clockwise
+
 D - rotate clockwise
+
 Space - shoot
+
