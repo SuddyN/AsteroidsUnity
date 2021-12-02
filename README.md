@@ -22,3 +22,12 @@ D - rotate clockwise
 
 Space - shoot
 
+Escape - reset
+
+## Extra Credit Attempted:
+
+(2, ½)% — add at least one level, which increases difficulty. In Asteroids, this typically means more and faster asteroids.
+
+(4, 1)% — add acceleration and deceleration to movement (the ship is rarely still).
+
+(4, 1)% — asteroids spawn smaller asteroids when struck.
