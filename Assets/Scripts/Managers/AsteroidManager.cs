@@ -42,24 +42,19 @@ public class AsteroidManager: MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
 
-        if (collision.gameObject == Managers.Game.playerObject) {
-            SceneManager.LoadScene("Asteroids");
-            Destroy(Managers.Game.gameObject);
-        }
-
         if (invulnarableTimer > 0) {
             return;
         }
 
         if (spawnObject != null) {
-            GameObject newAsteroid0 = Instantiate(spawnObject, gameObject.transform.position, gameObject.transform.rotation);
+            GameObject newAsteroid0 = Instantiate(spawnObject, gameObject.transform.position, Random.rotation);
             newAsteroid0.GetComponent<Rigidbody>().velocity = Quaternion.Euler(0, 0, -90) * gameObject.GetComponent<Rigidbody>().velocity / 2;
 
-            GameObject newAsteroid1 = Instantiate(spawnObject, gameObject.transform.position, gameObject.transform.rotation);
+            GameObject newAsteroid1 = Instantiate(spawnObject, gameObject.transform.position, Random.rotation);
             newAsteroid1.GetComponent<Rigidbody>().velocity = Quaternion.Euler(0, 0, 90) * gameObject.GetComponent<Rigidbody>().velocity / 2;
 
-            newAsteroid0.GetComponent<AsteroidManager>().invulnarableTimer = 0.25f;
-            newAsteroid1.GetComponent<AsteroidManager>().invulnarableTimer = 0.25f;
+            newAsteroid0.GetComponent<AsteroidManager>().invulnarableTimer = 0.1f;
+            newAsteroid1.GetComponent<AsteroidManager>().invulnarableTimer = 0.1f;
 
         }
 

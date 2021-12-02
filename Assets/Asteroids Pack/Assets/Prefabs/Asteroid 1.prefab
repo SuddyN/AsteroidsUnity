@@ -301,7 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationConstant: 0.25
   movementConstant: 0.25
-  spawnObject: {fileID: 141316, guid: 84cc3cd234dfc9d4d9d2e92c0eb0af75, type: 3}
+  spawnObject: {fileID: 0}
 --- !u!1 &176588
 GameObject:
   m_ObjectHideFlags: 0

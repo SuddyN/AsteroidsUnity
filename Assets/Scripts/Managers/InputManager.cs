@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InputManager: MonoBehaviour {
     // Start is called before the first frame update
@@ -14,6 +15,15 @@ public class InputManager: MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
+        if (Input.GetKey(KeyCode.Escape)) {
+            SceneManager.LoadScene("Asteroids");
+            Destroy(Managers.Game.gameObject);
+        }
+
+        if (Managers.Game.playerObject == null) {
+            return;
+        }
         bulletTimer += Time.deltaTime;
         KeyboardInput();
     }
@@ -42,8 +52,9 @@ public class InputManager: MonoBehaviour {
             GameManager gm = Managers.Game;
             Vector3 pos = gm.playerObject.transform.position;
             GameObject bullet = Instantiate(gm.bulletPrefab, pos, gm.playerObject.transform.rotation);
-            bullet.GetComponent<Rigidbody>().velocity = gm.playerObject.transform.up * 5;
+            bullet.GetComponent<Rigidbody>().velocity = gm.playerObject.transform.up * 7;
             bulletTimer = 0;
         }
+
     }
 }

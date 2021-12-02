@@ -15,6 +15,11 @@ public class MovementManager: MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
+        if (Managers.Game.playerObject == null) {
+            return;
+        }
+
         boundaryCheck();
         validateMovement();
         Managers.Game.playerObject.transform.Translate(Managers.Game.playerVelocity * Time.deltaTime);
